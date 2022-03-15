@@ -1,0 +1,685 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "iteration": 1647335328903,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 10,
+      "panels": [
+        {
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "max": 100,
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 0,
+            "y": 1
+          },
+          "id": 8,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "8.4.3",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_cpu_usage{cluster=~\"$cluster\"}/cluster_cpu_allocatable{cluster=~\"$cluster\"}*100",
+              "interval": "",
+              "legendFormat": "CPU Usage",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_memory_usage{cluster=~\"$cluster\"}/cluster_memory_allocatable{cluster=~\"$cluster\"}*100",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Memory Usage",
+              "refId": "B"
+            }
+          ],
+          "title": "Cluster Resource Usage Percent of $cluster",
+          "type": "gauge"
+        },
+        {
+          "description": "Connectivity between the managed cluster and the control plane",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "0": {
+                      "index": 1,
+                      "text": "down"
+                    },
+                    "1": {
+                      "index": 0,
+                      "text": "up"
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "orange"
+                  },
+                  {
+                    "color": "semi-dark-green",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 4,
+            "x": 8,
+            "y": 1
+          },
+          "id": 15,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "8.4.3",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_isconnected{cluster=~\"$cluster\"}",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "Connectivity",
+          "type": "stat"
+        },
+        {
+          "description": "The resource of cpu, unit is m",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 12,
+            "x": 12,
+            "y": 1
+          },
+          "id": 12,
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "8.4.3",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_cpu_allocatable{cluster=~\"$cluster\"}",
+              "interval": "",
+              "legendFormat": "CPU Allocatable",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_cpu_capacity{cluster=~\"$cluster\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "CPU Capacity",
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_cpu_usage{cluster=~\"$cluster\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "CPU Usage",
+              "refId": "C"
+            }
+          ],
+          "title": "Cluster CPU resource of ${cluster}",
+          "type": "stat"
+        },
+        {
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 12,
+            "x": 0,
+            "y": 7
+          },
+          "id": 13,
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "8.4.3",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_memory_allocatable{cluster=~\"$cluster\"}",
+              "interval": "",
+              "legendFormat": "Memory Allocatable",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_memory_capacity{cluster=~\"$cluster\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Memory Capacity",
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_memory_usage{cluster=~\"$cluster\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Memory Usage",
+              "refId": "C"
+            }
+          ],
+          "title": "Cluster Memory resource of ${cluster}",
+          "type": "stat"
+        },
+        {
+          "description": "The number of pod Allocatable/Capacity",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 12,
+            "x": 12,
+            "y": 7
+          },
+          "id": 6,
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "8.4.3",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_pod_allocatable{cluster=~\"$cluster\"}",
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "Pod Allocatable",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_pod_capacity{cluster=~\"$cluster\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Pod Capacity",
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "C"
+            }
+          ],
+          "title": "Cluster Pod Allocatable of $cluster",
+          "type": "stat"
+        },
+        {
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisGridShow": true,
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 0,
+            "y": 13
+          },
+          "id": 4,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_cpu_allocatable{cluster=~\"$cluster\"}",
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{__name__}}",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_cpu_usage{cluster=~\"$cluster\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{__name__}}",
+              "refId": "B"
+            }
+          ],
+          "title": "Cluster CPU Panel of $cluster",
+          "type": "timeseries"
+        },
+        {
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 8,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 12,
+            "y": 13
+          },
+          "id": 2,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_memory_allocatable{cluster=~\"$cluster\"}",
+              "interval": "",
+              "legendFormat": "{{__name__}}",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "rhKcU3Y7z"
+              },
+              "exemplar": true,
+              "expr": "cluster_memory_usage{cluster=~\"$cluster\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{__name__}}",
+              "refId": "B"
+            }
+          ],
+          "title": "Cluster Memory Panel of $cluster",
+          "type": "timeseries"
+        }
+      ],
+      "repeat": "cluster",
+      "title": "${cluster}",
+      "type": "row"
+    }
+  ],
+  "refresh": "15m",
+  "schemaVersion": 35,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "definition": "cluster_isconnected{}",
+        "description": "The name of cluster",
+        "hide": 0,
+        "includeAll": true,
+        "label": "",
+        "multi": true,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "query": "cluster_isconnected{}",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "/.*cluster=\\\"([^\\\"]*).*/",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "KubeVela Multi-Cluster Dashboard",
+  "uid": "ulINl3Y7k",
+  "version": 23,
+  "weekStart": ""
+}
