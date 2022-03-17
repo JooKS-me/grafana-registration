@@ -4,4 +4,4 @@ version: 0.0.7
 
 image:
   name: oamdev/grafana-configuration:0.0.7
-  imagePullPolicy: Always
+  imagePullPolicy: Never
