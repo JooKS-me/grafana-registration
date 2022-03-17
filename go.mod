@@ -6,6 +6,7 @@ require (
 	github.com/go-logr/logr v0.4.0
 	github.com/go-logr/zapr v0.4.0 // indirect
 	github.com/grafana-tools/sdk v0.0.0-20210714133701-11b1efc100c9
+	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/onsi/ginkgo v1.16.2
 	github.com/onsi/gomega v1.12.0
 	github.com/pkg/errors v0.9.1
@@ -16,4 +17,4 @@ require (
 	sigs.k8s.io/controller-runtime v0.6.2
 )
 
-replace github.com/grafana-tools/sdk v0.0.0-20210714133701-11b1efc100c9 => github.com/zzxwill/grafana-sdk v0.9.4
+replace github.com/grafana-tools/sdk v0.0.0-20210714133701-11b1efc100c9 => github.com/jooks-me/grafana-sdk v0.9.5
